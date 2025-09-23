@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MozMerch Store</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          container: {
+            center: true,
+            padding: "1rem",
+            screens: {
+              sm: "540px",
+              md: "680px",
+              lg: "920px",
+              xl: "1080px",
+              "2xl": "1200px",
+            },
+          },
+          extend: {
+            keyframes: {
+              arrow: {
+                "0%, 100%": { transform: "translateX(0)" },
+                "50%": { transform: "translateX(0.25rem)" },
+              },
+            },
+            animation: {
+              "arrow-wiggle": "arrow 1.6s ease-in-out infinite",
+            },
+            colors: {
+              primary: "#d21034",
+              secondary: "#fce100",
+              accent: "#007168",
+            },
+          },
+        },
+      };
+    </script>
+    <!-- AOS Animate On Scroll -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body class="bg-white">
+    <!-- Website Animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: false, // anima a cada scroll, não apenas no carregamento
+      });
+    </script>
+
+    <!-- Navigation -->
+    <nav
+      class="fixed text-white font-bold top-0 left-0 right-0 backdrop-blur-md z-50 "
+    >
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex justify-between items-center">
+          <div class="text-2xl  gradient-text">MozMerch.store</div>
+          <div class="hidden md:flex space-x-6">
+            <a
+              href="#sobre"
+              class="hover:text-primary transition-colors"
+              >O Que É?</a
+            >
+            <a
+              href="#como-funciona"
+              class="hover:text-primary transition-colors"
+              >Como Funciona?</a
+            >
+          </div>
+          <!--
+				<a href="#inscricao" class="bg-blue-100 text-accent px-6 py-2  hover:bg-blue-700 transition-colors">
+                    Brevemente
+                </a>
+				-->
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+
+    <section
+      class="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
+      <video
+        class="absolute inset-0 w-full h-full object-cover blur-3xl"
+        src="public/hero-bg.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
+      <!-- Solid black overlay on top of video -->
+      <div class="absolute inset-0 bg-black/60 z-10"></div>
+      <!-- Overlays: gradient + vignette for better contrast -->
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
+      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)]"></div>
+      <!-- Optional Overlay 
+  <div class="absolute inset-0 bg-black bg-opacity-30 z-10"></div>-->
+
+      <div class="container text-white mx-auto px-4 text-center relative z-20">
+        <div class="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-xl p-8 md:p-10 fade-in-up" data-aos="fade-up" data-aos-delay="150">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-sm uppercase tracking-wide mb-5">
+            <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+            Brevemente
+          </div>
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            O Primeiro
+            <span class="gradient-text block p-2 bg-clip-text text-transparent bg-gradient-to-r from-accent via-white to-accent">Shopping Digital</span>
+            de Moçambique
+          </h1>
+          <p class="text-xl md:text-2xl text-white/80 mb-8 mx-auto">
+            Elevamos marcas locais através de uma plataforma digital acessível.
+          </p>
+          <div
+            class="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          >
+            <a
+              href="#inscricao"
+              class="px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105  text-white shadow-lg hover:shadow-xl  shadow-accent/80 hover:shadow-accent/90 inline-flex items-center gap-3 group"
+            >
+              <span>Juntar-se à Lista de Espera</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                class="w-5 h-5 transition-transform duration-200 ease-out group-hover:translate-x-1 animate-arrow-wiggle"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7" />
+              </svg>
+            </a>
+            <!--
+            <a
+              href="#sobre"
+              class="px-8 py-4 rounded-lg text-lg font-semibold transition-all border border-white/30 text-white hover:bg-white/10"
+            >
+              Saber Mais
+            </a>
+            -->
+          </div>
+        </div>
+      </div>
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-6 left-0 right-0 flex justify-center z-20">
+        <div class="text-white/70 animate-bounce" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="sobre" class="py-20 relative overflow-hidden">
+      <!-- Blurred background image -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-xl" style="background-image: url('public/bg1.png')"></div>
+      <!-- Same overlay effects as hero section -->
+      <div class="absolute inset-0 bg-black/60 z-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
+      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)] z-10"></div>
+      <div class="container mx-auto px-4 relative z-20">
+        <div
+          class="text-center mb-16 fade-in-up"
+          data-aos="fade-up"
+          data-aos-delay="200"
+        >
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+            O que é o MozMerch.store?
+          </h2>
+          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+            Uma plataforma revolucionária que digitaliza o comércio moçambicano,
+            criando oportunidades para marcas locais, artistas e empreendedores
+            alcançarem novos mercados
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="100"
+            class="text-center bg-gradient-to-br from-primary/10 to-primary/20 shadow-lg p-8 rounded-xl border border-primary/20"
+          >
+            <div
+              class="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-white">Para Marcas</h3>
+            <p class="text-gray-300">
+              Expanda o seu negócio online com uma loja virtual profissional e
+              alcance clientes em todo o país
+            </p>
+          </div>
+
+          <div
+            data-aos="fade-up"
+            data-aos-delay="300"
+            class="text-center bg-gradient-to-br from-secondary/10 to-secondary/20 p-8 shadow-lg rounded-xl border border-secondary/20"
+          >
+            <div
+              class="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-white">Para Artistas</h3>
+            <p class="text-gray-300">
+              Monetize a sua arte e criatividade vendendo produtos únicos numa
+              plataforma dedicada ao talento moçambicano
+            </p>
+          </div>
+
+          <div
+            data-aos="fade-up"
+            data-aos-delay="500"
+            class="text-center bg-gradient-to-br from-accent/10 to-accent/20 p-8 shadow-lg rounded-xl border border-accent/20"
+          >
+            <div
+              class="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-6"
+            >
+              <svg
+                class="w-8 h-8 text-white"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5L14.5 18M14.5 18a1.5 1.5 0 100 3 1.5 1.5 0 000-3zM6 8l2-2 2 2M6 8l2 2 2-2"
+                ></path>
+              </svg>
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-white">Para Compradores</h3>
+            <p class="text-gray-300">
+              Descubra produtos únicos e autênticos de marcas e artistas
+              moçambicanos numa única plataforma
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it Works -->
+    <section id="como-funciona" class="py-20 relative overflow-hidden">
+      <!-- Blurred background image -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-3xl" style="background-image: url('public/bg.png')"></div>
+      <!-- Same overlay effects as hero section -->
+      <div class="absolute inset-0 bg-black/60 z-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
+      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)] z-10"></div>
+      <div class="container mx-auto px-4 relative z-20">
+        <div data-aos="fade-up" class="text-center mb-16 fade-in-up">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Como Funciona?</h2>
+          <p class="text-xl text-gray-300">
+            Simples, rápido e eficiente em apenas 3 passos
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="100"
+            class="text-center fade-in-up"
+          >
+            <div
+              class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold"
+            >
+              1
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-white">Registo</h3>
+            <p class="text-gray-300">
+              Crie o seu perfil como marca, artista ou comprador na nossa
+              plataforma
+            </p>
+          </div>
+
+          <div
+            data-aos="fade-up"
+            data-aos-delay="300"
+            class="text-center fade-in-up"
+          >
+            <div
+              class="w-20 h-20 bg-secondary text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold"
+            >
+              2
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-white">Configure</h3>
+            <p class="text-gray-300">
+              Monte a sua loja virtual ou browse pelos produtos disponíveis
+            </p>
+          </div>
+
+          <div
+            data-aos="fade-up"
+            data-aos-delay="500"
+            class="text-center fade-in-up"
+          >
+            <div
+              class="w-20 h-20 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold"
+            >
+              3
+            </div>
+            <h3 class="text-2xl font-semibold mb-4 text-white">Venda ou Compre</h3>
+            <p class="text-gray-300">
+              Comece a vender os seus produtos ou a descobrir marcas incríveis
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sign up Form -->
+    <section
+      id="inscricao"
+      class="py-20 relative overflow-hidden"
+    >
+      <!-- Blurred background image -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-3xl" style="background-image: url('public/bg.png')"></div>
+      <!-- Same overlay effects as hero section -->
+      <div class="absolute inset-0 bg-black/60 z-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
+      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)] z-10"></div>
+      <div class="container mx-auto px-4 relative z-20">
+        <div class="max-w-2xl mx-auto text-center text-white fade-in-up">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+            Junte-se à Revolução Digital
+          </h2>
+          <p class="text-xl mb-8">
+            Seja um dos primeiros a fazer parte do MozMerch Mall e transforme o
+            seu negócio
+          </p>
+
+          <form class="bg-white rounded-xl p-8 text-left">
+            <div class="grid md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-gray-700 font-semibold mb-2"
+                  >Nome Completo</label
+                >
+                <input
+                  type="text"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+              <div>
+                <label class="block text-gray-700 font-semibold mb-2"
+                  >Email</label
+                >
+                <input
+                  type="email"
+                  class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                />
+              </div>
+            </div>
+
+            <div class="mt-6">
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Telefone</label
+              >
+              <input
+                type="tel"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              />
+            </div>
+
+            <div class="mt-6">
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Tipo de Perfil</label
+              >
+              <select
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                <option>Selecione uma opção</option>
+                <option>Marca/Empresa</option>
+                <option>Artista/Criativo</option>
+                <option>Empreendedor</option>
+                <option>Comprador</option>
+              </select>
+            </div>
+
+            <div class="mt-6">
+              <label class="block text-gray-700 font-semibold mb-2"
+                >Conte-nos sobre o seu interesse</label
+              >
+              <textarea
+                rows="4"
+                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                placeholder="O que espera do MozMerch Mall?"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-primary text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors mt-6"
+            >
+              Juntar-se à Lista de Espera
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="py-20 relative overflow-hidden">
+      <!-- Blurred background image -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-3xl" style="background-image: url('public/bg.png')"></div>
+      <!-- Same overlay effects as hero section -->
+      <div class="absolute inset-0 bg-black/60 z-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
+      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)] z-10"></div>
+      <div class="container mx-auto px-4 relative z-20">
+        <div class="text-center mb-16 fade-in-up">
+          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+            Perguntas Frequentes
+          </h2>
+        </div>
+
+        <div class="max-w-3xl mx-auto">
+          <div class="space-y-6">
+            <div
+              data-aos="fade-up"
+              data-aos-delay="100"
+              class="bg-gray-800 border border-gray-700 p-6 rounded-xl shadow-sm"
+            >
+              <h3 class="text-xl font-semibold mb-3 text-white">
+                Quando será lançado o MozMerch Mall?
+              </h3>
+              <p class="text-gray-300">
+                Estamos trabalhando para lançar a plataforma no primeiro
+                trimestre de 2025. Os membros da lista de espera serão os
+                primeiros a ter acesso.
+              </p>
+            </div>
+
+            <div
+              data-aos="fade-up"
+              data-aos-delay="200"
+              class="bg-gray-800 border border-gray-700 p-6 rounded-xl shadow-md"
+            >
+              <h3 class="text-xl font-semibold mb-3 text-white">
+                Há custos para criar uma loja?
+              </h3>
+              <p class="text-gray-300">
+                Ofereceremos planos flexíveis, incluindo uma opção gratuita para
+                pequenos vendedores começarem. Detalhes completos serão
+                anunciados em breve.
+              </p>
+            </div>
+
+            <div
+              data-aos="fade-up"
+              data-aos-delay="300"
+              class="bg-gray-800 border border-gray-700 p-6 rounded-xl shadow-md"
+            >
+              <h3 class="text-xl font-semibold mb-3 text-white">
+                Como funcionarão os pagamentos?
+              </h3>
+              <p class="text-gray-300">
+                Integraremos com os principais métodos de pagamento em
+                Moçambique, incluindo M-Pesa, e-Mola e transferências bancárias.
+              </p>
+            </div>
+
+            <div
+              data-aos="fade-up"
+              data-aos-delay="500"
+              class="bg-gray-800 border border-gray-700 p-6 rounded-xl shadow-lg"
+            >
+              <h3 class="text-xl font-semibold mb-3 text-white">
+                Haverá suporte para entrega?
+              </h3>
+              <p class="text-gray-300">
+                Sim, trabalharemos com parceiros logísticos locais para oferecer
+                opções de entrega em Maputo e outras cidades principais.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-white py-12 relative overflow-hidden">
+      <!-- Blurred background image -->
+      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-3xl" style="background-image: url('public/bg.png')"></div>
+      <!-- Same overlay effects as hero section -->
+      <div class="absolute inset-0 bg-black/60 z-10"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
+      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)] z-10"></div>
+      <div class="container mx-auto px-4 relative z-20">
+        <div class="text-center">
+          <div
+            data-aos="fade-up"
+            data-aos-delay="300"
+            class="text-3xl font-bold gradient-text mb-4"
+          >
+            MozMerch.store
+          </div>
+          <p class="text-gray-400 mb-6">
+            O primeiro shopping digital de Moçambique
+          </p>
+          <p class="text-gray-500 text-sm">
+            © 2025 MozMerch Mall. Todos os direitos reservados.
+          </p>
+          <div class="mt-6">
+            <a
+              href="mailto:info@mozmerch.store"
+              class="text-primary hover:text-blue-400 transition-colors"
+            >
+              info@mozmerch.store
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
