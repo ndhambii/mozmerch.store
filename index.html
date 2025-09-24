@@ -20,108 +20,97 @@
             },
           },
           extend: {
-            keyframes: {
-              arrow: {
-                "0%, 100%": { transform: "translateX(0)" },
-                "50%": { transform: "translateX(0.25rem)" },
-              },
-            },
-            animation: {
-              "arrow-wiggle": "arrow 1.6s ease-in-out infinite",
-            },
             colors: {
               primary: "#d21034",
               secondary: "#fce100",
               accent: "#007168",
             },
+            keyframes: {
+              'arrow': {
+                '0%, 100%': { transform: 'translateX(0)' },
+                '50%': { transform: 'translateX(0.25rem)' },
+              },
+              'floating-slow': {
+                '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+                '50%': { transform: 'translateY(-30px) translateX(20px)' },
+              },
+              'floating-fast': {
+                '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+                '50%': { transform: 'translateY(-50px) translateX(-30px)' },
+              },
+              'floating-medium': {
+                '0%, 100%': { transform: 'translateY(0) translateX(0)' },
+                '50%': { transform: 'translateY(40px) translateX(-20px)' },
+              },
+            },
+            animation: {
+              'arrow-wiggle': 'arrow 1.6s ease-in-out infinite',
+              'floating-slow': 'floating-slow 20s ease-in-out infinite',
+              'floating-fast': 'floating-fast 15s ease-in-out infinite',
+              'floating-medium': 'floating-medium 18s ease-in-out infinite',
+            },
           },
         },
       };
     </script>
-    <!-- AOS Animate On Scroll -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
   </head>
-  <body class="bg-white">
-    <!-- Website Animations -->
+
+  <body class="bg-[#E6F0F3]	 text-gray-600">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({
         duration: 800,
-        once: false, // anima a cada scroll, não apenas no carregamento
+        once: false,
       });
     </script>
 
     <!-- Navigation -->
-    <nav
-      class="fixed text-white font-bold top-0 left-0 right-0 backdrop-blur-md z-50 "
-    >
+    <nav class="fixed font-bold top-0 left-0 right-0 backdrop-blur-md z-50">
       <div class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
-          <div class="text-2xl  gradient-text">MozMerch.store</div>
+          <div class="text-2xl">MozMerch.store</div>
           <div class="hidden md:flex space-x-6">
-            <a
-              href="#sobre"
-              class="hover:text-primary transition-colors"
-              >O Que É?</a
-            >
-            <a
-              href="#como-funciona"
-              class="hover:text-primary transition-colors"
-              >Como Funciona?</a
-            >
+            <a href="#sobre" class="hover:text-primary transition-colors">O Que É?</a>
+            <a href="#como-funciona" class="hover:text-primary transition-colors">Como Funciona?</a>
           </div>
-          <!--
-				<a href="#inscricao" class="bg-blue-100 text-accent px-6 py-2  hover:bg-blue-700 transition-colors">
-                    Brevemente
-                </a>
-				-->
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- HERO SECTION with floating blurred shapes -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <!-- Blobs background -->
+      <div class="absolute inset-0 z-0 overflow-hidden">
+		<div class="absolute w-96 h-96 bg-primary/30  blur-3xl animate-floating-fast rounded-lg top-1/3 left-2/2"></div>
+        <div class="absolute w-96 h-96 bg-secondary/25  blur-3xl rounded-full animate-floating-fast top-2/4 left-2/3"></div>
+        <div class="absolute w-96 h-96 bg-accent/20  blur-3xl rounded-full animate-floating-fast		 top-1/6 right-1/3"></div>
+      </div>
 
-    <section
-      class="relative min-h-screen flex items-center justify-center overflow-hidden"
-    >
-      <video
-        class="absolute inset-0 w-full h-full object-cover blur-3xl"
-        src="hero-bg.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-      ></video>
-      <!-- Solid black overlay on top of video -->
-      <div class="absolute inset-0 bg-black/60 z-10"></div>
-      <!-- Overlays: gradient + vignette for better contrast -->
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
-      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)]"></div>
-      <!-- Optional Overlay 
-  <div class="absolute inset-0 bg-black bg-opacity-30 z-10"></div>-->
-
-      <div class="container text-white mx-auto px-4 text-center relative z-20">
+     
+      <!-- Main content -->
+      <div class="container mx-auto px-4 text-center relative z-20">
         <div class="max-w-3xl mx-auto bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl shadow-xl p-8 md:p-10 fade-in-up" data-aos="fade-up" data-aos-delay="150">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/10 text-sm uppercase tracking-wide mb-5">
             <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
             Brevemente
           </div>
-          <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <h1 class="text-5xl md:text-7xl text-gray-500 font-bold mb-6 leading-tight">
             O Primeiro
-            <span class="gradient-text block p-2 bg-clip-text text-transparent bg-gradient-to-r from-accent via-white to-accent">Shopping Digital</span>
-            de Moçambique
+            <span class="block p-4 bg-clip-text text-transparent bg-gradient-to-r from-accent via-accent/35 to-accent">
+              Shopping Digital
+            </span>
+            de <span class="text-gray-500" >Moçambique</span>
           </h1>
-          <p class="text-xl md:text-2xl text-white/80 mb-8 mx-auto">
+          <p class="text-xl md:text-2xl  mb-8 mx-auto">
             Elevamos marcas locais através de uma plataforma digital acessível.
           </p>
-          <div
-            class="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <a
               href="#inscricao"
-              class="px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105  text-white shadow-lg hover:shadow-xl  shadow-accent/80 hover:shadow-accent/90 inline-flex items-center gap-3 group"
+              class="px-8 py-4 rounded-lg text-gray-500 text-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl shadow-accent/80 hover:shadow-accent/90 inline-flex items-center gap-3 group"
             >
-              <span>Juntar-se à Lista de Espera</span>
+              <span>Entrar na Lista de Espera</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
@@ -134,17 +123,10 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7" />
               </svg>
             </a>
-            <!--
-            <a
-              href="#sobre"
-              class="px-8 py-4 rounded-lg text-lg font-semibold transition-all border border-white/30 text-white hover:bg-white/10"
-            >
-              Saber Mais
-            </a>
-            -->
           </div>
         </div>
       </div>
+
       <!-- Scroll Indicator -->
       <div class="absolute bottom-6 left-0 right-0 flex justify-center z-20">
         <div class="text-white/70 animate-bounce" aria-hidden="true">
@@ -154,25 +136,20 @@
         </div>
       </div>
     </section>
-
-    <!-- About Section -->
+	
+	 <!-- About Section -->
     <section id="sobre" class="py-20 relative overflow-hidden">
-      <!-- Blurred background image -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-xl" style="background-image: url('public/bg1.png')"></div>
-      <!-- Same overlay effects as hero section -->
-      <div class="absolute inset-0 bg-black/60 z-10"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
-      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)] z-10"></div>
+     
       <div class="container mx-auto px-4 relative z-20">
         <div
           class="text-center mb-16 fade-in-up"
           data-aos="fade-up"
           data-aos-delay="200"
         >
-          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <h2 class="text-4xl text-accent md:text-5xl font-bold mb-6">
             O que é o MozMerch.store?
           </h2>
-          <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p class="text-xl  max-w-3xl mx-auto">
             Uma plataforma revolucionária que digitaliza o comércio moçambicano,
             criando oportunidades para marcas locais, artistas e empreendedores
             alcançarem novos mercados
@@ -202,8 +179,8 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-white">Para Marcas</h3>
-            <p class="text-gray-300">
+            <h3 class="text-2xl font-semibold mb-4 ">Para Marcas</h3>
+            <p class="">
               Expanda o seu negócio online com uma loja virtual profissional e
               alcance clientes em todo o país
             </p>
@@ -231,8 +208,8 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-white">Para Artistas</h3>
-            <p class="text-gray-300">
+            <h3 class="text-2xl font-semibold mb-4 ">Para Artistas</h3>
+            <p class="">
               Monetize a sua arte e criatividade vendendo produtos únicos numa
               plataforma dedicada ao talento moçambicano
             </p>
@@ -260,8 +237,8 @@
                 ></path>
               </svg>
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-white">Para Compradores</h3>
-            <p class="text-gray-300">
+            <h3 class="text-2xl font-semibold mb-4 ">Para Compradores</h3>
+            <p class="">
               Descubra produtos únicos e autênticos de marcas e artistas
               moçambicanos numa única plataforma
             </p>
@@ -272,16 +249,11 @@
 
     <!-- How it Works -->
     <section id="como-funciona" class="py-20 relative overflow-hidden">
-      <!-- Blurred background image -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-3xl" style="background-image: url('public/bg.png')"></div>
-      <!-- Same overlay effects as hero section -->
-      <div class="absolute inset-0 bg-black/60 z-10"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
-      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)] z-10"></div>
+      
       <div class="container mx-auto px-4 relative z-20">
         <div data-aos="fade-up" class="text-center mb-16 fade-in-up">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">Como Funciona?</h2>
-          <p class="text-xl text-gray-300">
+          <h2 class="text-4xl text-accent md:text-5xl font-bold mb-6">Como Funciona?</h2>
+          <p class="text-xl">
             Simples, rápido e eficiente em apenas 3 passos
           </p>
         </div>
@@ -295,10 +267,10 @@
             <div
               class="w-20 h-20 bg-primary text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold"
             >
-              1
+              I
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-white">Registo</h3>
-            <p class="text-gray-300">
+            <h3 class="text-2xl font-semibold mb-4 ">Registo</h3>
+            <p class="">
               Crie o seu perfil como marca, artista ou comprador na nossa
               plataforma
             </p>
@@ -312,10 +284,10 @@
             <div
               class="w-20 h-20 bg-secondary text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold"
             >
-              2
+              II
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-white">Configure</h3>
-            <p class="text-gray-300">
+            <h3 class="text-2xl font-semibold mb-4 ">Configure</h3>
+            <p class="">
               Monte a sua loja virtual ou browse pelos produtos disponíveis
             </p>
           </div>
@@ -328,10 +300,10 @@
             <div
               class="w-20 h-20 bg-accent text-white rounded-full flex items-center justify-center mx-auto mb-6 text-2xl font-bold"
             >
-              3
+              III
             </div>
-            <h3 class="text-2xl font-semibold mb-4 text-white">Venda ou Compre</h3>
-            <p class="text-gray-300">
+            <h3 class="text-2xl font-semibold mb-4 ">Venda ou Compre</h3>
+            <p class="">
               Comece a vender os seus produtos ou a descobrir marcas incríveis
             </p>
           </div>
@@ -344,15 +316,12 @@
       id="inscricao"
       class="py-20 relative overflow-hidden"
     >
-      <!-- Blurred background image -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-3xl" style="background-image: url('public/bg.png')"></div>
-      <!-- Same overlay effects as hero section -->
-      <div class="absolute inset-0 bg-black/60 z-10"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
-      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)] z-10"></div>
+      
+
+      <div class="absolute inset-0  z-10"></div>
       <div class="container mx-auto px-4 relative z-20">
-        <div class="max-w-2xl mx-auto text-center text-white fade-in-up">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6">
+        <div class="max-w-2xl mx-auto text-center  fade-in-up">
+          <h2 class="text-4xl text-accent md:text-5xl font-bold mb-6">
             Junte-se à Revolução Digital
           </h2>
           <p class="text-xl mb-8">
@@ -422,7 +391,7 @@
               type="submit"
               class="w-full bg-primary text-white py-4 rounded-lg font-semibold text-lg hover:bg-blue-700 transition-colors mt-6"
             >
-              Juntar-se à Lista de Espera
+              Submeter
             </button>
           </form>
         </div>
@@ -431,15 +400,11 @@
 
     <!-- FAQ -->
     <section id="faq" class="py-20 relative overflow-hidden">
-      <!-- Blurred background image -->
-      <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-3xl" style="background-image: url('public/bg.png')"></div>
-      <!-- Same overlay effects as hero section -->
-      <div class="absolute inset-0 bg-black/60 z-10"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60 z-10"></div>
-      <div class="pointer-events-none absolute inset-0 [background:radial-gradient(1200px_600px_at_50%_20%,rgba(255,255,255,0.06),transparent_60%)] z-10"></div>
+      
+      <div class="absolute inset-0 z-10"></div>
       <div class="container mx-auto px-4 relative z-20">
         <div class="text-center mb-16 fade-in-up">
-          <h2 class="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <h2 class="text-4xl text-accent md:text-5xl font-bold mb-6 ">
             Perguntas Frequentes
           </h2>
         </div>
@@ -510,6 +475,17 @@
 
     <!-- Footer -->
     <footer class="text-white py-12 relative overflow-hidden">
+	
+	      <video
+        class="absolute inset-0 w-full h-full object-cover blur-sm"
+        src="hero-bg.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
+      <!-- Solid black overlay on top of video -->
+      <div class="absolute inset-0 bg-black/20 z-10"></div>
       <!-- Blurred background image -->
       <div class="absolute inset-0 bg-cover bg-center bg-no-repeat blur-3xl" style="background-image: url('public/bg.png')"></div>
       <!-- Same overlay effects as hero section -->
@@ -521,7 +497,7 @@
           <div
             data-aos="fade-up"
             data-aos-delay="300"
-            class="text-3xl font-bold gradient-text mb-4"
+            class="text-3xl text-accent font-bold gradient-text mb-4"
           >
             MozMerch.store
           </div>
