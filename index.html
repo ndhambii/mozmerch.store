@@ -140,10 +140,11 @@
             Elevamos marcas locais através de uma plataforma digital acessível.
           </p>
           <div class="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center items-center">
-            <a
-              href="#inscricao"
-              class="px-8 py-4 rounded-lg text-gray-500 text-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl shadow-accent/80 hover:shadow-accent/90 inline-flex items-center gap-3 group"
-            >
+              <a
+                href="#inscricao"
+                class="relative px-8 py-4 rounded-lg text-gray-500 text-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-xl shadow-accent/80 hover:shadow-accent/90 inline-flex items-center gap-3 group overflow-hidden"
+                style="border: 1px solid transparent; background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #007168 0%, #007168 25%, #007168 25%, #fce100 100%) border-box;"
+              >
               <span>Lista de Espera</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -334,11 +335,12 @@
 					placeholder="digite..."
               ></textarea>
             </div>
-
-            <button
-              type="submit"
-              class="px-8 py-4 mt-8 rounded-lg text-gray-500 text-lg font-semibold transition-all transform hover:scale-105 shadow-md hover:shadow-lg shadow-accent/80 hover:shadow-accent/90 inline-flex items-center gap-3 group"
-				>
+            <div>
+              <button
+                type="submit"
+                class="relative px-8 py-4 mt-8 rounded-lg text-gray-500 text-lg font-semibold transition-all transform hover:scale-105 shadow-lg hover:shadow-lg shadow-accent/80 hover:shadow-accent/90 inline-flex items-center gap-3 group overflow-hidden"
+                style="border: 1px solid transparent; background: linear-gradient(white, white) padding-box, linear-gradient(45deg, #007168 0%, #007168 25%, #007168 25%, #fce100 100%) border-box;"
+              >
 				  Submeter
 				                <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -352,6 +354,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" d="M13 5l7 7-7 7" />
               </svg>
             </button>
+            
           </form>
 			  
 			
