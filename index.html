@@ -590,5 +590,87 @@
       window.addEventListener('hashchange', closeMenu);
     }
   </script>
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getFirestore, doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+  // 🔧 Your Firebase config (paste it here)
+const firebaseConfig = {
+  apiKey: "AIzaSyD5EuJZKvdcJrqRe1sqkrvEdI_LN1t0eiY",
+  authDomain: "mozmerch-waitlist.firebaseapp.com",
+  projectId: "mozmerch-waitlist",
+  storageBucket: "mozmerch-waitlist.firebasestorage.app",
+  messagingSenderId: "34282039711",
+  appId: "1:34282039711:web:5b12a0bdd5a5f1fea335aa"
+};
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Elements
+  const form = document.getElementById("waitlist-form");
+  const emailEl = document.getElementById("waitlist-email");
+  const roleEl = document.getElementById("waitlist-role");
+  const commentEl = document.getElementById("waitlist-comment");
+  const statusEl = document.getElementById("waitlist-status");
+  const honeypot = document.getElementById("mm-website");
+  const renderedAt = Date.now();
+
+  // Helpers
+  const isValidEmail = (email) => /^[^\s@]+@[^\s@]{2,}\.[^\s@]{2,}$/.test(email);
+
+  async function sha256Hex(text) {
+    const data = new TextEncoder().encode(text);
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+    const bytes = Array.from(new Uint8Array(hashBuffer));
+    return bytes.map((b) => b.toString(16).padStart(2, "0")).join("");
+  }
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = emailEl.value.trim().toLowerCase();
+    const profileType = roleEl.value || "";
+    const comment = commentEl.value.trim();
+
+    if (!isValidEmail(email)) {
+      statusEl.textContent = "Insere um email válido.";
+      emailEl.focus();
+      return;
+    }
+    if (honeypot.value) return;
+    if (Date.now() - renderedAt < 1200) return;
+
+    statusEl.textContent = "A guardar…";
+    const btn = form.querySelector('button[type="submit"]');
+    btn.disabled = true;
+
+    try {
+      const id = await sha256Hex(email);
+      await setDoc(
+        doc(db, "waitlist", id),
+        {
+          email,
+          profileType,
+          comment,
+          createdAt: serverTimestamp(),
+          source: location.hostname,
+          ua: navigator.userAgent,
+        },
+        { merge: true }
+      );
+      statusEl.textContent = "✅ Obrigado! Já estás na lista.";
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      statusEl.textContent = "❌ Ocorreu um erro. Tenta novamente.";
+    } finally {
+      btn.disabled = false;
+    }
+  });
+</script>
+
   </body>
 </html>
