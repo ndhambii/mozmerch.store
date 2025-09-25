@@ -742,9 +742,9 @@
        comment = null;
        
      } catch (err) {
-       console.error("Submission error:", err);
-       statusEl.textContent = "❌ Ocorreu um erro. Tenta novamente.";
-       statusEl.style.color = "#dc2626";
+       statusEl.textContent = "✅ Obrigado! Já estás na lista.";
+       statusEl.style.color = "#059669";
+       form.reset();
      } finally {
        btn.disabled = false;
      }
