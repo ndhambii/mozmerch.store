@@ -1,4 +1,4 @@
-##MozMerch.store Landing Page
+###MozMerch.store Landing Page
 
 Official landing page for MozMerch.store, a digital mall for Mozambican brands, artists and creators.
 
